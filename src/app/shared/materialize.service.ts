@@ -13,7 +13,7 @@ export class MaterialService {
     M.toast({html: message});
   }
 
-  static initializeDropdown(ref: ElementRef) {
-    return M.Dropdown.init(ref.nativeElement);
+  static initializeDropdown(ref: ElementRef, options) {
+    return M.Dropdown.init(ref.nativeElement, options);
   }
 }

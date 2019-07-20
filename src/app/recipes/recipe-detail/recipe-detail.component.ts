@@ -18,7 +18,12 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.taptarget = MaterialService.initializeDropdown(this.dropDownRef);
+    this.taptarget = MaterialService.initializeDropdown(
+      this.dropDownRef,
+      {
+        constrainWidth: false,
+        coverTrigger: false
+      });
   }
 
   /**
