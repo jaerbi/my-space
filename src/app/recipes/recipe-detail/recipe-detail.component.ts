@@ -1,5 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MaterialInstance, MaterialService} from '../../shared/materialize.service';
+import {Recipe} from '../recipe.model';
+import {migrateLegacyGlobalConfig} from '@angular/cli/utilities/config';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -8,7 +10,9 @@ import {MaterialInstance, MaterialService} from '../../shared/materialize.servic
 })
 export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild('recipeDropdown', { static: false }) dropDownRef: ElementRef;
+  @Input() recipe: Recipe;
+
+  @ViewChild('floatingActionBtn', { static: false }) actionBtnRef: ElementRef;
 
   taptarget: MaterialInstance;
 
@@ -18,18 +22,18 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.taptarget = MaterialService.initializeDropdown(
-      this.dropDownRef,
+    this.taptarget = MaterialService.initializeFloatingActionBtn(
+      this.actionBtnRef,
       {
-        constrainWidth: false,
-        coverTrigger: false
+        direction: 'left',
+        // hoverEnabled: false
       });
   }
 
   /**
-   * Open drop down menu
+   * Show Floating action Btn
    */
-  openDropdown() {
+  showFloatingBtn() {
     this.taptarget.open();
   }
 

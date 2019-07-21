@@ -1,43 +1,54 @@
 <div class="row">
   <div class="col s12">
-    <img src="" alt="" class="avatar">
-  </div>
-</div>
+    <div class="card">
+      <div class="card-image">
+        <img [src]="recipe.imagePath" alt="{{recipe.name}}">
+        <span class="card-title">{{recipe.name}}</span>
 
-<div class="row">
-  <div class="col s12">
-    <h1>Recipe Name</h1>
-  </div>
-</div>
+        <div
+          class="fixed-action-btn"
+          #floatingActionBtn
+          (click)="showFloatingBtn()"
+        >
+          <a class="btn-floating btn-large red">
+            <i class="large material-icons">settings_ethernet</i>
+          </a>
+          <ul class="float-list">
+            <li data-title="To Shopping list">
+              <a class="btn-floating blue darken-1">
+                <i class="material-icons">list</i>
+              </a>
+            </li>
+            <li data-title="Edit Recipe">
+              <a class="btn-floating green darken-1">
+                <i class="material-icons">mode_edit</i>
+              </a>
+            </li>
+            <li data-title="Delete recipe">
+              <a class="btn-floating red">
+                <i class="material-icons">delete</i>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-<div class="row">
-  <div class="col s12">
-    <div>
-      <a class="waves-effect waves-light btn">
-        Manage Recipe
-        <span class="caret"></span>
-      </a>
+        <!--<a -->
+          <!--class="btn-floating halfway-fab waves-effect waves-light red"-->
+        <!--&gt;-->
+          <!--<i class="material-icons">add</i>-->
+        <!--</a>-->
 
-      <!-- Dropdown Trigger -->
-      <a
-        #recipeDropdown
-        (click)="openDropdown()"
-        class='dropdown-trigger btn waves-effect waves-light'
-        data-target='recipeDropdown'>Drop Me!</a>
-
-      <!-- Dropdown Structure -->
-      <ul id='recipeDropdown' class='dropdown-content'>
-        <li><a href="#!">To Shopping list</a></li>
-        <li><a href="#!">Edit Recipe</a></li>
-        <li><a href="#!">Delete recipe</a></li>
-      </ul>
-
+      </div>
+      <div class="card-content">
+        <p>{{recipe.description}}</p>
+      </div>
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col s12">
-    Description
+    {{recipe.description}}
   </div>
 </div>
 <div class="row">

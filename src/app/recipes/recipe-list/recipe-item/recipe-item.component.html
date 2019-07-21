@@ -1,1 +1,14 @@
-<p>recipe-item works!</p>
+<div class="collection">
+  <a
+    href="#!"
+    class="collection-item avatar"
+    (click)="openRecipe()"
+  >
+    <img
+      [src]="recipeItem.imagePath"
+      alt="{{recipeItem.name}}"
+      class="circle">
+    <span class="title">{{recipeItem.name}}</span>
+    <p>{{recipeItem.description}}</p>
+  </a>
+</div>

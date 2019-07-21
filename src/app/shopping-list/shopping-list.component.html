@@ -2,8 +2,13 @@
   <div class="col s10">
     <app-shopping-edit></app-shopping-edit>
     <hr>
-    <ul>
-      <li></li>
+    <ul class="collection">
+      <li
+        class="collection-item z-depth-4"
+        *ngFor="let ingredient of ingredients"
+      >
+        <p>{{ ingredient.name }} - <span>({{ ingredient.amount }})</span></p>
+      </li>
     </ul>
   </div>
 </div>
