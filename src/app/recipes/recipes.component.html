@@ -6,7 +6,7 @@
   <div class="col m7">
     <app-recipe-detail *ngIf="recipeForDetail; else infoText" [recipe]="recipeForDetail"></app-recipe-detail>
     <ng-template #infoText>
-      <h5 [appGreen]="'deep-purple lighten-3'">Please select a Recipe! Directive</h5>
+      <h5 appGreen="deep-purple lighten-4">Please select a Recipe! Directive</h5>
     </ng-template>
   </div>
 </div>

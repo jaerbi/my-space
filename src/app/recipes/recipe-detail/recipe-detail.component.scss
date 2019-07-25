@@ -6,6 +6,19 @@
     transform: translate(-50%, 50%);
   }
 }
+.dropdown-own {
+  position: relative;
+
+  .open {
+    + .dropdown-content {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      display: block;
+      opacity: 1;
+    }
+  }
+}
 
 .float-list {
   li[data-title] {

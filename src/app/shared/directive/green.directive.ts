@@ -23,12 +23,12 @@ export class GreenDirective implements OnInit {
     this.backgroundForText = this.addClass;
   }
 
-  @HostListener('mouseenter') mouseHover(eventData: Event) {
+  @HostListener('mouseenter', ['$event']) mouseHover(eventData: Event): void {
     this.backgroundForText = 'teal darken-2';
     this.colorForText = '#f2f2f2';
   }
 
-  @HostListener('mouseleave') mouseLeave(eventData: Event) {
+  @HostListener('mouseleave', ['$event']) mouseLeave(eventData: Event): void {
     this.backgroundForText = this.addClass;
     this.colorForText = '#333333';
   }
