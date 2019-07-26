@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {MaterialInstance, MaterialService} from '../../shared/materialize.service';
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -20,7 +20,8 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private recipeService: RecipeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +39,14 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
         direction: 'left',
         // hoverEnabled: false
       });
+  }
+
+  /**
+   * Navigate to edit relative path
+   */
+  onEditRecipe() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   /**
