@@ -29,17 +29,23 @@
           </a>
           <ul class="float-list">
             <li data-title="To Shopping list">
-              <a class="btn-floating blue darken-1">
-                <i class="material-icons">list</i>
+              <a (click)="onAddToShopList()"
+                class="btn-floating blue darken-1"
+              >
+                <i class="material-icons">playlist_add</i>
               </a>
             </li>
             <li data-title="Edit Recipe">
-              <a class="btn-floating green darken-1">
+              <a
+                class="btn-floating green darken-1"
+              >
                 <i class="material-icons">mode_edit</i>
               </a>
             </li>
             <li data-title="Delete recipe">
-              <a class="btn-floating red">
+              <a
+                class="btn-floating red"
+              >
                 <i class="material-icons">delete</i>
               </a>
             </li>
@@ -61,8 +67,10 @@
 </div>
 <div class="row">
   <div class="col s12">
-    <ul class="float-list">
-      <li *ngFor="let ingredient of recipe.ingredients">
+    <ul class="collection">
+      <li
+        class="collection-item"
+        *ngFor="let ingredient of recipe.ingredients">
         {{ingredient.name}} -> {{ingredient.amount}}
       </li>
     </ul>

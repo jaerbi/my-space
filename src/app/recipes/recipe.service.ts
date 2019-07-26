@@ -1,7 +1,10 @@
 import {Recipe} from './recipe.model';
-import {EventEmitter} from '@angular/core';
-import {Ingredient} from '../shared/ingredient.model';
+import {EventEmitter, Injectable} from '@angular/core';
 
+import {Ingredient} from '../shared/ingredient.model';
+import {ShoppingListService} from '../shopping-list/shopping-list.service';
+
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
@@ -26,7 +29,21 @@ export class RecipeService {
     )
   ];
 
-   getRecipe(): Recipe[] {
+   constructor(private shopLService: ShoppingListService) {
+
+   }
+
+  /**
+   * Get recipe copy
+   */
+  getRecipe(): Recipe[] {
      return this.recipes.slice();
+   }
+
+  /**
+   * Add ingredients to shopping list
+   */
+  addIngredients(ingredients: Ingredient[]) {
+     this.shopLService.addIngredients(ingredients);
    }
 }

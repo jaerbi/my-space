@@ -22,4 +22,18 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
+
+  /**
+   * Added array to the ingredients, ...use
+   * @param Array ingredients
+   */
+  addIngredients(ingredients: Ingredient[]) {
+    // for (const ingredient of ingredients) {
+    //   console.log(ingredient);
+    //   this.addIngredient(ingredient);
+    // }
+
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
 }
