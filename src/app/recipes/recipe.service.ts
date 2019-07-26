@@ -8,7 +8,7 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
-   private recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe(
       'Test Recipe',
       'Some text for example',
@@ -29,21 +29,28 @@ export class RecipeService {
     )
   ];
 
-   constructor(private shopLService: ShoppingListService) {
+  constructor(private shopLService: ShoppingListService) {
 
-   }
+  }
 
   /**
-   * Get recipe copy
+   * Get recipes copy
    */
-  getRecipe(): Recipe[] {
-     return this.recipes.slice();
-   }
+  getRecipes(): Recipe[] {
+    return this.recipes.slice();
+  }
+
+  /**
+   * @param number index
+   */
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
 
   /**
    * Add ingredients to shopping list
    */
   addIngredients(ingredients: Ingredient[]) {
-     this.shopLService.addIngredients(ingredients);
-   }
+    this.shopLService.addIngredients(ingredients);
+  }
 }

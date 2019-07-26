@@ -8,14 +8,8 @@ import * as _ from 'lodash';
 })
 export class AppComponent implements OnInit {
 
-  loadedFeature = 'recipe';
-
   constructor() {}
 
   ngOnInit(): void {
-  }
-
-  onNavigate(feature: string): void {
-    this.loadedFeature = feature;
   }
 }

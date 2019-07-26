@@ -1,8 +1,8 @@
 <div class="collection">
   <a
-    href="#!"
+    routerLinkActive="active"
     class="collection-item avatar"
-    (click)="openRecipe()"
+    [routerLink]="[index]"
   >
     <img
       [src]="recipeItem.imagePath"

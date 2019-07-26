@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MaterialInstance, MaterialService} from '../../shared/materialize.service';
 import {Recipe} from '../recipe.model';
-import {migrateLegacyGlobalConfig} from '@angular/cli/utilities/config';
 import {RecipeService} from '../recipe.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -11,15 +11,24 @@ import {RecipeService} from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() recipe: Recipe;
+  recipe: Recipe;
+  id: number;
 
   @ViewChild('floatingActionBtn', { static: false }) actionBtnRef: ElementRef;
 
   taptarget: MaterialInstance;
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.params
+      .subscribe((params: Params) => {
+        this.id = +params.id;
+        this.recipe = this.recipeService.getRecipe(this.id);
+      });
   }
 
   ngAfterViewInit(): void {

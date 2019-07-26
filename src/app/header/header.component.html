@@ -1,13 +1,12 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo left">Recipe Book</a>
+    <a routerLink="/recipes" class="brand-logo left">Recipe Book</a>
     <ul class="right">
-      <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
-      <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+      <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+      <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
       <li>
         <a
           class="dropdown-trigger"
-          href="#!"
           #manageDropdown
           data-target='manageDropdown'
           (click)="openManage()"
@@ -21,6 +20,6 @@
 </nav>
 
 <ul class="dropdown-content" id="manageDropdown">
-  <li><a href="#!">Save Data</a></li>
-  <li><a href="#!">Fetch Data</a></li>
+  <li><a>Save Data</a></li>
+  <li><a>Fetch Data</a></li>
 </ul>

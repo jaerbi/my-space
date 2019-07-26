@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, AfterViewInit, OnDestroy, ViewChild, ElementRef, OnInit} from '@angular/core';
+import {Component, AfterViewInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {MaterialInstance, MaterialService} from '../shared/materialize.service';
 
 @Component({
@@ -9,8 +9,6 @@ import {MaterialInstance, MaterialService} from '../shared/materialize.service';
 export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   taptarget: MaterialInstance;
-
-  @Output() featureSelected = new EventEmitter<string>();
 
   @ViewChild('manageDropdown', { static: false }) dropDownRef: ElementRef;
 
@@ -26,14 +24,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.taptarget.destroy();
-  }
-
-  /**
-   * Emit for navigate component from menu
-   * @param string feature
-   */
-  onSelect(feature: string) {
-    this.featureSelected.emit(feature);
   }
 
   /**
