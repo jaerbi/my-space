@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s12">
-    <form>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
 
         <div class="col m6  s9 input-field">
@@ -10,6 +10,8 @@
             id="name"
             class="validate"
             #nameInput
+            ngModel
+            name="nameInput"
           >
         </div>
         <div class="col m2 s3 input-field">
@@ -19,6 +21,8 @@
             id="amount"
             class="valid"
             #amountInput
+            ngModel
+            name="amountInput"
           >
         </div>
 
