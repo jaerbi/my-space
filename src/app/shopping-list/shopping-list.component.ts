@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {takeUntil} from 'rxjs/operators';
+import {Subject, Subscription} from 'rxjs';
+
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from './shopping-list.service';
 
@@ -7,16 +10,30 @@ import {ShoppingListService} from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
+
+  private destroyStream = new Subject<void>();
+  private subIngredients: Subscription;
 
   ingredients: Ingredient[];
 
-  constructor(private shopLService: ShoppingListService) { }
+  constructor(private shopLService: ShoppingListService) {
+  }
 
   ngOnInit() {
     this.ingredients = this.shopLService.getIngredients();
-    this.shopLService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => {
-      this.ingredients = ingredients;
-    });
+    this.subIngredients = this.shopLService.ingredientsChanged
+      .pipe(takeUntil(this.destroyStream))
+      .subscribe(
+        (ingredients: Ingredient[]) => {
+          this.ingredients = ingredients;
+        },
+        (error) => console.log(error),
+        () => console.log('Steam Completed!')
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.destroyStream.next();
   }
 }
