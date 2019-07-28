@@ -20,6 +20,15 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  /**
+   * Get one ingredient
+   * @param number index
+   */
+  getIngredient(index: number): Ingredient {
+    return this.ingredients[index];
+  }
+
+
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.next(this.ingredients.slice());
@@ -36,6 +45,25 @@ export class ShoppingListService {
     // }
 
     this.ingredients.push(...ingredients);
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  /**
+   * Update one ingredient
+   * @param number index
+   * @param Ingredient newIngredient
+   */
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  /**
+   * Delete ingredient
+   * @param number index
+   */
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
