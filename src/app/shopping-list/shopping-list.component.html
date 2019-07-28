@@ -5,7 +5,8 @@
     <ul class="collection">
       <li
         class="collection-item z-depth-4"
-        *ngFor="let ingredient of ingredients"
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
       >
         <p>{{ ingredient.name }} - <span>({{ ingredient.amount }})</span></p>
       </li>

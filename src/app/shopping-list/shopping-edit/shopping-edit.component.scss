@@ -7,3 +7,24 @@
     }
   }
 }
+
+
+
+input {
+
+  .helper-text {
+    display: none;
+  }
+
+  &.invalid {
+    + .helper-text {
+      display: block;
+      color: var(--danger-color);
+    }
+  }
+
+  &.ng-touched.ng-invalid {
+    border: 1px solid var(--danger-color);
+  }
+}
+
