@@ -1,0 +1,9 @@
+img {
+  width: 300px;
+}
+
+input, textarea {
+  &.ng-invalid.ng-touched {
+    border-bottom: 1px solid var(--danger-color);
+  }
+}

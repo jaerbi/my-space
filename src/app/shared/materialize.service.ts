@@ -13,6 +13,14 @@ export class MaterialService {
     M.toast({html: message}, {displayLength: 5000});
   }
 
+  static updateTextInputs() {
+    M.updateTextFields();
+  }
+
+  static textareaResize(ref: ElementRef) {
+    M.textareaAutoResize(ref);
+  }
+
   static initializeDropdown(ref: ElementRef, options: object) {
     return M.Dropdown.init(ref.nativeElement, options);
   }

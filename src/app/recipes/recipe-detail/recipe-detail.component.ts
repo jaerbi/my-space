@@ -63,6 +63,11 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
     this.recipeService.addIngredients(this.recipe.ingredients);
   }
 
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
+
   ngOnDestroy(): void {
     this.taptarget.destroy();
   }

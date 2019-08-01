@@ -12,7 +12,7 @@ import {NgForm} from '@angular/forms';
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
 
-  @ViewChild('form', {static: true}) slForm: HTMLFormElement;
+  @ViewChild('form', {static: true}) slForm: NgForm;
 
   subEditing: Subscription;
   editMode = false;
@@ -42,7 +42,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
    * Added or update new ingredients use TD Form
    * @param NgForm form
    */
-  onSubmit(form: HTMLFormElement) {
+  onSubmit(form: NgForm) {
     const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
 
