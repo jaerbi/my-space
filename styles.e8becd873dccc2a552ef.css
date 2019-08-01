@@ -9,7 +9,7 @@
  * Copyright 2014 Alfiana E. Sibuea and other contributors
  * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE
- */:root{--primary-color:#0683eb;--home-color:#eaeaea;--light-color:#f2f2f2;--dark-color:#333333;--danger-color:crimson;--link-color:#00c13c;--warning-color:#e47f05}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Roboto,sans-serif;font-size:1rem;line-height:1.6;background:var(--home-color);color:var(--dark-color);margin:0}a{cursor:pointer;background-color:transparent;-webkit-text-decoration-skip:objects;color:#039be5;-webkit-tap-highlight-color:transparent;text-decoration:none}/*!
+ */:root{--primary-color:#0683eb;--home-color:#eaeaea;--light-color:#f2f2f2;--dark-color:#333333;--danger-color:crimson;--link-color:#00c13c;--warning-color:#e47f05}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Roboto,sans-serif;font-size:1rem;line-height:1.6;background:var(--home-color);color:var(--dark-color);margin:0}a{cursor:pointer;background-color:transparent;-webkit-text-decoration-skip:objects;color:#039be5;-webkit-tap-highlight-color:transparent;text-decoration:none}.btn-group{display:-webkit-box;display:flex}.btn-group button{margin-right:10px}.btn-group button:last-child{margin-right:0}/*!
  * Materialize v1.0.0-rc.2 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
