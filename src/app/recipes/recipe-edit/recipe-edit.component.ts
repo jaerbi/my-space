@@ -13,12 +13,18 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
-  arr: Array<number>;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private recipeService: RecipeService
   ) { }
+
+
+  // ERROR in Property 'controls' does not exist on type 'AbstractControl'.
+  get formData() {
+    return (this.recipeForm.get('ingredients') as FormArray);
+  }
 
   ngOnInit() {
     this.route.params
@@ -29,6 +35,7 @@ export class RecipeEditComponent implements OnInit {
         this.initForm();
       });
   }
+
 
   onSubmit() {
     // const newRecipe = new Recipe(
