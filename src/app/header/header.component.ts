@@ -1,20 +1,27 @@
-import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { MaterialInstance, MaterialService } from '../shared/materialize.service';
 import {FirebaseService} from '../shared/services/firebase.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements AfterViewInit, OnDestroy {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   taptarget: MaterialInstance;
 
   @ViewChild('manageDropdown', { static: false }) dropDownRef: ElementRef;
 
-  constructor(private fbService: FirebaseService) {}
+  constructor(
+    private fbService: FirebaseService,
+    public authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit(): void {
     this.taptarget = MaterialService.initializeDropdown(
@@ -23,7 +30,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
         constrainWidth: true,
         coverTrigger: false
       });
-
   }
 
   onSaveData() {
@@ -37,6 +43,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   onFetchData() {
     this.fbService.getRecipes();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

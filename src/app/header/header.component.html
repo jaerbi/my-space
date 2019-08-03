@@ -2,11 +2,24 @@
   <div class="nav-wrapper">
     <a routerLink="/" class="brand-logo left">Recipe Book</a>
     <ul class="right">
-      <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
-      <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-      <li routerLinkActive="active"><a routerLink="/signup">Registration</a></li>
-      <li routerLinkActive="active"><a routerLink="/signin">Login</a></li>
-      <li>
+      <li routerLinkActive="active">
+        <a routerLink="/recipes">Recipes</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/shopping-list">Shopping List</a>
+      </li>
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li routerLinkActive="active">
+          <a routerLink="/signup">Registration</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/signin">Login</a>
+        </li>
+      </ng-template>
+      <li *ngIf="authService.isAuthenticated()">
+        <a style="cursor: pointer" (click)="onLogout()">Logout</a>
+      </li>
+      <li [ngClass]="{'hide': !authService.isAuthenticated()}">
         <a
           class="dropdown-trigger"
           #manageDropdown
