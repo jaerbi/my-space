@@ -22,7 +22,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   constructor(private shopLService: ShoppingListService) { }
 
   ngOnInit() {
-    console.log(this.slForm);
     this.subEditing = this.shopLService.startedEditing
       .subscribe(
         (index: number) => {
