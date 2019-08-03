@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as _ from 'lodash';
+import {log} from 'util';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,6 @@ import * as _ from 'lodash';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  constructor() {}
 
   ngOnInit(): void {
   }

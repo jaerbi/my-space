@@ -4,6 +4,7 @@ import { Injectable} from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs';
+import {FirebaseService} from '../shared/services/firebase.service';
 
 @Injectable()
 export class RecipeService {
@@ -31,7 +32,18 @@ export class RecipeService {
     )
   ];
 
-  constructor(private shopLService: ShoppingListService) {}
+  constructor(
+    private shopLService: ShoppingListService
+  ) {}
+
+  /**
+   * Fetch recipe from firebase and replays recipe in component
+   * @param Recipe[] recipes
+   */
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   /**
    * Get recipes copy

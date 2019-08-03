@@ -20,6 +20,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {FormErrorDirective} from './shared/directive/form-error.directive';
 import {TypeBtnDirective} from './shared/directive/type-btn.directive';
 import {RecipeService} from './recipes/recipe.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FirebaseService} from './shared/services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -42,10 +44,12 @@ import {RecipeService} from './recipes/recipe.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
   ],
   providers: [
     ShoppingListService,
+    FirebaseService,
     RecipeService,
   ],
   bootstrap: [AppComponent]

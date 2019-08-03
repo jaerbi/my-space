@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appTypeBtn]'
@@ -6,7 +6,6 @@ import {Directive, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@ang
 export class TypeBtnDirective implements OnInit {
 
   @Input('appTypeBtn') typeBtn: string;
-  // @HostBinding('className') backgroundBtn: string;
 
   btnClass: string;
   backgroundBtn: string;
