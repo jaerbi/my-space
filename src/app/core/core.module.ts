@@ -5,6 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { TestLazyService } from '../shared/services/test-lazy.service';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { FirebaseService } from '../shared/services/firebase.service';
+import { RecipeService } from '../recipes/recipe.service';
+import { AuthService } from '../auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { TestLazyService } from '../shared/services/test-lazy.service';
     AppRoutingModule
   ],
   providers: [
-    TestLazyService
+    TestLazyService,
+    ShoppingListService,
+    FirebaseService,
+    RecipeService,
+    AuthService
   ],
   exports: [
     AppRoutingModule,

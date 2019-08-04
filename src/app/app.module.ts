@@ -5,15 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeService } from './recipes/recipe.service';
-import { FirebaseService } from './shared/services/firebase.service';
-import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth/auth-guard.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
-import { TestLazyService } from './shared/services/test-lazy.service';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -28,13 +22,6 @@ import { CoreModule } from './core/core.module';
     AuthModule,
     SharedModule,
     CoreModule
-  ],
-  providers: [
-    ShoppingListService,
-    FirebaseService,
-    RecipeService,
-    AuthService,
-    AuthGuard
   ],
   bootstrap: [ AppComponent ]
 })
