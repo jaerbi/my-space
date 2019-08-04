@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestLazyService } from '../../shared/services/test-lazy.service';
 
 @Component({
   selector: 'app-recipe-start',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeStartComponent implements OnInit {
 
-  constructor() { }
+  constructor(public testLazy: TestLazyService) { }
 
   ngOnInit() {
   }

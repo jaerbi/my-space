@@ -4,6 +4,7 @@ import {Subject, Subscription} from 'rxjs';
 
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from './shopping-list.service';
+import { TestLazyService } from '../shared/services/test-lazy.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -17,7 +18,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ingredients: Ingredient[];
 
-  constructor(private shopLService: ShoppingListService) {
+  constructor(
+    private shopLService: ShoppingListService,
+    public testLazy: TestLazyService
+    ) {
   }
 
   ngOnInit() {

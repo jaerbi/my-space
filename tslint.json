@@ -53,6 +53,15 @@
       "trace"
     ],
     "no-empty": false,
+    // my rules
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
     "no-inferrable-types": [
       true,
       "ignore-params"

@@ -11,6 +11,7 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { GreenDirective } from '../shared/directive/green.directive';
 import { SharedModule } from '../shared/shared.module';
+import { TestLazyService } from '../shared/services/test-lazy.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,9 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     RecipesRoutingModule,
     SharedModule
+  ],
+  providers: [
+    // TestLazyService
   ]
 })
 export class RecipesModule {}
