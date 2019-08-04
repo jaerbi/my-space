@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { MaterialInstance, MaterialService } from '../shared/materialize.service';
-import {FirebaseService} from '../shared/services/firebase.service';
+import { FirebaseService } from '../shared/services/firebase.service';
 import { AuthService } from '../auth/auth.service';
 
 @Component({

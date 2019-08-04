@@ -1,62 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { GreenDirective } from './shared/directive/green.directive';
-import { DropdownDirective } from './shared/directive/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { FormErrorDirective } from './shared/directive/form-error.directive';
-import { TypeBtnDirective } from './shared/directive/type-btn.directive';
 import { RecipeService } from './recipes/recipe.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FirebaseService } from './shared/services/firebase.service';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
+import { RecipesModule } from './recipes/recipes.module';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    GreenDirective,
-    TypeBtnDirective,
-    DropdownDirective,
-    FormErrorDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
-    SignupComponent,
-    SigninComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
+    BrowserModule, // only in app module they have CommonModule
     HttpClientModule,
-    ReactiveFormsModule,
+    AppRoutingModule,
+    RecipesModule,
+    ShoppingListModule,
+    AuthModule,
+    SharedModule,
   ],
   providers: [
     ShoppingListService,
     FirebaseService,
     RecipeService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [ AppComponent ]
 })
