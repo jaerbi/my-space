@@ -1,13 +1,17 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {MaterialInstance, MaterialService} from '../../shared/materialize.service';
-import {Recipe} from '../recipe.model';
-import {RecipeService} from '../recipe.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { MaterialInstance, MaterialService } from '../../shared/materialize.service';
+import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
+import { Ingredient } from '../../shared/ingredient.model';
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.scss']
+  styleUrls: [ './recipe-detail.component.scss' ]
 })
 export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -21,8 +25,10 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -45,7 +51,7 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
    * Navigate to edit relative path
    */
   onEditRecipe() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate([ 'edit' ], { relativeTo: this.route });
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
@@ -60,12 +66,14 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
    * Add ingredients from recipe to shopping list
    */
   onAddToShopList() {
-    this.recipeService.addIngredients(this.recipe.ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(this.recipe.ingredients));
+    // before Redux
+    // this.recipeService.addIngredients(this.recipe.ingredients);
   }
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
-    this.router.navigate(['/recipes']);
+    this.router.navigate([ '/recipes' ]);
   }
 
   ngOnDestroy(): void {

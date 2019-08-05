@@ -13,12 +13,33 @@ export class ShoppingListService {
     new Ingredient('Bananas', 19),
   ];
 
-  /**
-   * Get copy ingredients array
-   */
-  getIngredients(): Ingredient[] {
-    return this.ingredients.slice();
-  }
+
+  // before ngrx Redux
+  // /**
+  //  * Get copy ingredients array
+  //  */
+  // getIngredients(): Ingredient[] {
+  //   return this.ingredients.slice();
+  // }
+
+  // addIngredient(ingredient: Ingredient) {
+  //   this.ingredients.push(ingredient);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
+
+  // /**
+  //  * Added array to the ingredients, ...use
+  //  * @param Array ingredients
+  //  */
+  // addIngredients(ingredients: Ingredient[]) {
+  //   // for (const ingredient of ingredients) {
+  //   //   console.log(ingredient);
+  //   //   this.addIngredient(ingredient);
+  //   // }
+  //
+  //   this.ingredients.push(...ingredients);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 
   /**
    * Get one ingredient
@@ -26,26 +47,6 @@ export class ShoppingListService {
    */
   getIngredient(index: number): Ingredient {
     return this.ingredients[index];
-  }
-
-
-  addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
-
-  /**
-   * Added array to the ingredients, ...use
-   * @param Array ingredients
-   */
-  addIngredients(ingredients: Ingredient[]) {
-    // for (const ingredient of ingredients) {
-    //   console.log(ingredient);
-    //   this.addIngredient(ingredient);
-    // }
-
-    this.ingredients.push(...ingredients);
-    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   /**

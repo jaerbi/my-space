@@ -1,12 +1,8 @@
 import {Recipe} from './recipe.model';
-import { Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 import {Ingredient} from '../shared/ingredient.model';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
-import {Subject} from 'rxjs';
-import {FirebaseService} from '../shared/services/firebase.service';
 
-@Injectable()
 export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
@@ -32,10 +28,6 @@ export class RecipeService {
     )
   ];
 
-  constructor(
-    private shopLService: ShoppingListService
-  ) {}
-
   /**
    * Fetch recipe from firebase and replays recipe in component
    * @param Recipe[] recipes
@@ -59,12 +51,14 @@ export class RecipeService {
     return this.recipes[index];
   }
 
-  /**
-   * Add ingredients to shopping list
-   */
-  addIngredients(ingredients: Ingredient[]) {
-    this.shopLService.addIngredients(ingredients);
-  }
+  // before Redux
+  // /**
+  //  * Add ingredients to shopping list
+  //  */
+  // addIngredients(ingredients: Ingredient[]) {
+  //   // this.shopLService.addIngredients(ingredients);
+  //   this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
+  // }
 
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
