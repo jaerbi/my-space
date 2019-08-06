@@ -4,15 +4,15 @@ import {Ingredient} from '../shared/ingredient.model';
 
 export class ShoppingListService {
 
-  ingredientsChanged = new Subject<Ingredient[]>();
-  startedEditing = new Subject<number>();
+  // before ngrx Redux
+  // ingredientsChanged = new Subject<Ingredient[]>();
+  // startedEditing = new Subject<number>();
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 7),
-    new Ingredient('Bananas', 19),
-  ];
-
+  // private ingredients: Ingredient[] = [
+  //   new Ingredient('Apples', 5),
+  //   new Ingredient('Tomatoes', 7),
+  //   new Ingredient('Bananas', 19),
+  // ];
 
   // before ngrx Redux
   // /**
@@ -20,6 +20,14 @@ export class ShoppingListService {
   //  */
   // getIngredients(): Ingredient[] {
   //   return this.ingredients.slice();
+  // }
+
+  // /**
+  //  * Get one ingredient
+  //  * @param number index
+  //  */
+  // getIngredient(index: number): Ingredient {
+  //   return this.ingredients[index];
   // }
 
   // addIngredient(ingredient: Ingredient) {
@@ -41,30 +49,22 @@ export class ShoppingListService {
   //   this.ingredientsChanged.next(this.ingredients.slice());
   // }
 
-  /**
-   * Get one ingredient
-   * @param number index
-   */
-  getIngredient(index: number): Ingredient {
-    return this.ingredients[index];
-  }
+  // /**
+  //  * Update one ingredient
+  //  * @param number index
+  //  * @param Ingredient newIngredient
+  //  */
+  // updateIngredient(index: number, newIngredient: Ingredient) {
+  //   this.ingredients[index] = newIngredient;
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 
-  /**
-   * Update one ingredient
-   * @param number index
-   * @param Ingredient newIngredient
-   */
-  updateIngredient(index: number, newIngredient: Ingredient) {
-    this.ingredients[index] = newIngredient;
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
-
-  /**
-   * Delete ingredient
-   * @param number index
-   */
-  deleteIngredient(index: number) {
-    this.ingredients.splice(index, 1);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
+  // /**
+  //  * Delete ingredient
+  //  * @param number index
+  //  */
+  // deleteIngredient(index: number) {
+  //   this.ingredients.splice(index, 1);
+  //   this.ingredientsChanged.next(this.ingredients.slice());
+  // }
 }

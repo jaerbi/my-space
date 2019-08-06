@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from './shopping-list.service';
 import { TestLazyService } from '../shared/services/test-lazy.service';
+import * as ShoppingListActions from './store/shopping-list.actions';
+import * as fromShoppingList from './store/shopping-list.reducers';
 
 @Component({
   selector: 'app-shopping-list',
@@ -21,9 +22,8 @@ export class ShoppingListComponent implements OnInit {
   shoppingListState: Observable<{ ingredients: Ingredient[] }>;
 
   constructor(
-    private shopLService: ShoppingListService,
     public testLazy: TestLazyService,
-    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
+    private store: Store<fromShoppingList.AppState>
   ) {
   }
 
@@ -48,7 +48,10 @@ export class ShoppingListComponent implements OnInit {
    * @param number index
    */
   onEditItem(index: number) {
-    this.shopLService.startedEditing.next(index);
+    this.store.dispatch(new ShoppingListActions.StartEdit(index));
+
+    // before Redux
+    // this.shopLService.startedEditing.next(index);
   }
 
   // ngOnDestroy(): void {
