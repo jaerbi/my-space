@@ -12,6 +12,7 @@ const appRoutes: Routes = [
   // lazyLoading
   { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
   { path: 'shopping-list', component: ShoppingListComponent },
+  // { path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

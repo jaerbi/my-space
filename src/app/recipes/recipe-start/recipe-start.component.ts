@@ -11,6 +11,6 @@ export class RecipeStartComponent implements OnInit {
   constructor(public testLazy: TestLazyService) { }
 
   ngOnInit() {
+    
   }
-
 }
