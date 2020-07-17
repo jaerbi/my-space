@@ -21,7 +21,7 @@
     "@angular/router": "~8.1.2",
     "@ngrx/store": "^8.2.0",
     "firebase": "^6.3.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "materialize-css": "^1.0.0-rc.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
